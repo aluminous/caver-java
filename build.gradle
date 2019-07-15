@@ -15,6 +15,13 @@ plugins {
     id 'maven'
     id 'signing'
     id 'idea'
+
+    id 'com.gradle.build-scan' version '2.3'
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
 }
 
 allprojects {
