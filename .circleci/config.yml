@@ -37,7 +37,10 @@ workflows:
   version: 2.1
   caver-java-ci:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /v.*/
 
       - hold:
           type: approval
@@ -45,10 +48,13 @@ workflows:
             - build
           filters:
             tags:
-              only: /^v.*/
+              only: /v.*/
             branches:
               ignore: /.*/
 
       - deploy:
           requires:
             - hold
+          filters:
+            tags:
+              only: /v.*/
